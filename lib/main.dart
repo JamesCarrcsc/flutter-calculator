@@ -140,12 +140,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildCalculatorButton('%'), // Modulo operator button
+                      _buildCalculatorButton('Clear'),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-          ElevatedButton(
-            onPressed: _clearExpression,
-            child: const Text('Clear'),
           ),
         ],
       ),
@@ -158,6 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           if (value == '=') {
             _calculateResult();
+          } else if (value == 'Clear') {
+            _clearExpression();
           } else {
             _addToExpression(value);
           }
